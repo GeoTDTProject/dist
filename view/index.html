@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../css/jquery.bootgrid.min.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div>
+        <div class="header"></div>
+        <div class="center">
+            <div class="workcenter">
+                <div class="worknav">
+                    <ul class="nav nav-pills nav-stacked navbar-inverse" style="height: 100%;width: 60px;float:left;" id="worknavtabs">
+                        <li role="presentation" class="active"><a href="#query" role="tab" data-toggle="tab">Query</a></li>
+                        <li role="presentation"><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
+                        <li role="presentation"><a href="#mess" role="tab" data-toggle="tab">Mess</a></li>
+                    </ul>
+                    <div class="tab-content" style="margin-left: 60px;height:100%">
+                        <div class="tab-pane active" id="query" style="height:100%;overflow-y:auto;">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist" id="workpaneltabs" style="height: 42px;">
+                                <li role="presentation" class="active"><a href="#tuxingquery" aria-controls="tuxingquery" role="tab" data-toggle="tab">图形</a></li>
+                                <li role="presentation"><a href="#xingzhengquery" aria-controls="xingzhengquery" role="tab" data-toggle="tab">行政分界</a></li>
+                                <li role="presentation"><a href="#shuxingquery" aria-controls="shuxingquery" role="tab" data-toggle="tab">属性</a></li>
+                                <li role="presentation"><a href="#dianquery" aria-controls="dianquery" role="tab" data-toggle="tab">点</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="tuxingquery">
+                                    <section>
+                                        <div style="text-align: center;">
+                                            <div class="btn-group" style="text-align: center">
+                                                <a class="btn" id="btn_query_line"><img src="../assets/images/polyline.png" width="32" height="32" alt="线" title="线"></a>
+                                                <a class="btn" id="btn_query_rectangle"><img src="../assets/images/polyline.png" width="32" height="32" alt="矩形" title="矩形"></a>
+                                                <a class="btn" id="btn_query_polygon"><img src="../assets/images/polyline.png" width="32" height="32" alt="多边形" title="多边形"></a>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <table id="grid" class="table table-condensed table-hover table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th data-column-id="Seq">序号</th>
+                                                    <th data-column-id="Lon">经度</th>
+                                                    <th data-column-id="Lat">纬度</th>
+                                                </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                        <div style="text-align: center;">
+                                            <button id="btnclearresult" type="button" class="btn">清除结果</button>
+                                            <button id="btnstartquery" type="button" class="btn">开始查询</button>
+                                        </div>
+                                        <div id="graph_query_result">
+
+                                        </div>
+                                    </section>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="xingzhengquery">...</div>
+                                <div role="tabpanel" class="tab-pane" id="shuxingquery">...</div>
+                                <div role="tabpanel" class="tab-pane" id="dianquery">...</div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="profile" style="height: 100%;">
+                            Profile
+                        </div>
+                        <div class="tab-pane" id="mess" style="height: 100%;">
+                            Message
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mapholder">
+                <div class="mapshow">
+                    <div id="mapDiv" style="position: absolute; width: 100%; height: 100%; display: block;"></div>
+                </div>
+                <div id="MapInfoTab" class="mapinfo_but " title="收起左栏" style="top: 219px;">
+                    <div class="mapinfo_but_con">
+                        <span class="mapinfo_but_span"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"></div>
+    </div>
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.bootgrid.min.js"></script>
+    <script src="../js/mainlayout.js"></script>
+    <script src="http://api.tianditu.com/js/maps.js"></script>
+    <script src="../js/geooperate.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#worknavtabs').tab();
+            $('#workpaneltabs').tab();
+
+            $("#grid").bootgrid({
+                navigation:0,
+                rowCount:-1
+            });
+
+            loadMap();
+        });
+    </script>
+</body>
+</html>
